@@ -1,5 +1,4 @@
 # write a code that generates a random number without using any libraries in python
-from timeit import timeit
 import matplotlib.pyplot as plt
 
 # Generates a list of zeros of size n
