@@ -9,30 +9,7 @@ def zeros(n):
     return [0]*n
 
 
-def float_to_int(x):
-    """
-    Converts a float to an integer
-    """
-    int_val = int(x*1000000)
-    # print(int_val)
-    return int_val
-
-# print(float_to_int(0.345155513))
-
-
-def negative_conv(x):
-    """
-    Selects a number to become negative or not
-    """
-    new_val = float_to_int(x)
-    # print("MOD:", new_val % 10)
-    if ((new_val % 10000) % 2 == 0):
-        return -1*x
-    else:
-        return x
-
-
-def rand_gen(size, seed):
+def pseudo_rand_gen(low, high, size, seed):
     mult = 16807
     mod = (2**31)-1
     U = zeros(size)
@@ -40,18 +17,13 @@ def rand_gen(size, seed):
     U[0] = x/mod
     for i in range(1, size):
         x = (x * mult + 1) % mod
-        U[i] = negative_conv(x/mod)
+        U[i] = low + (high - low) * x/mod
     return U
 
 
-def pseudo_uniform_rand_num(low, high, size, seed):
-    summ = low + (high - low)
-    return summ * rand_gen(size, seed)
-
-
 # calling the random number generator function
-random_numbers = pseudo_uniform_rand_num(
-    low=-9, high=6, size=100, seed=1234567)
+random_numbers = pseudo_rand_gen(
+    low=-5, high=6, size=10000, seed=123456789)
 
 # Graph plot
 print(random_numbers)
