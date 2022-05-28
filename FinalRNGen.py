@@ -46,4 +46,11 @@ passing the seed into the pseudo_rand_gen function, will generate a different li
 '''
 
 random_nums_list = pseudo_rand_gen(
-    low=0, high=20, size=200000, seed=completely_random_seed)
+    low=0, high=20, size=10000000, seed=completely_random_seed)
+
+print(random_numbers)
+plt.hist(random_numbers, bins=20)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.xlim(-6, 8)
+plt.show()
