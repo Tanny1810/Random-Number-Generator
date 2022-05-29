@@ -20,7 +20,7 @@ def pseudo_rand_gen(low, high, size, seed):
         x = (weight * x + bias) % mod
         # fit our value to the range provided by low and high, and add it to the list
         random_vals[i] = low + (high - low) * x/mod
-
+    print("random vals list generated!")
     return random_vals
 
 
@@ -35,7 +35,7 @@ and the memory address of a variable is a unique number if and only if the varia
 I will get into this after the code 
 '''
 
-def ProduceRandomNumsList(low=0, high=20, size=10000000):
+def ProduceRandomNumsList(low=0, high=20, size=100000):
 
 
     ls = [69]  # completely pointless list, just to access a unique memory address each time the code is run
