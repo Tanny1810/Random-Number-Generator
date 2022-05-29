@@ -4,8 +4,6 @@ since we are working with computers, which are deterministic, we can only make a
 the first thing I learned was how pseudo random number generators work
 and then implemented my own in the following way:
 '''
-import matplotlib.pyplot as plt
-
 
 def pseudo_rand_gen(low, high, size, seed):
     weight = 1337  # random number
@@ -22,6 +20,7 @@ def pseudo_rand_gen(low, high, size, seed):
         x = (weight * x + bias) % mod
         # fit our value to the range provided by low and high, and add it to the list
         random_vals[i] = low + (high - low) * x/mod
+
     return random_vals
 
 
@@ -36,21 +35,20 @@ and the memory address of a variable is a unique number if and only if the varia
 I will get into this after the code 
 '''
 
-ls = [69]  # completely pointless list, just to access a unique memory address each time the code is run
-# we now get the seed from the memory address of the list
-completely_random_seed = id(ls)
+def ProduceRandomNumsList(low=0, high=20, size=10000000):
 
-'''
-since a list is a mutable, python assigns it different memory locations each time it is run
-passing the seed into the pseudo_rand_gen function, will generate a different list of random numbers each time
-'''
 
-random_nums_list = pseudo_rand_gen(
-    low=0, high=20, size=10000000, seed=completely_random_seed)
+    ls = [69]  # completely pointless list, just to access a unique memory address each time the code is run
+    completely_random_seed = id(ls)# we now get the seed from the memory address of the list
 
-print(random_nums_list)
-plt.hist(random_nums_list, bins=20)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
-plt.xlim(-6, 8)
-plt.show()
+
+    '''
+    since a list is a mutable, python assigns it different memory locations each time it is run
+    passing the seed into the pseudo_rand_gen function, will generate a different list of random numbers each time
+    '''
+
+    random_nums_list = pseudo_rand_gen(
+        low=low, high=high, size=size, seed=completely_random_seed)
+
+    return random_nums_list
+
