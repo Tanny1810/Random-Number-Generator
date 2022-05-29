@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 
 # Generates a list of zeros of size n
 
-# generate a function to return a string
-
 
 def zeros(n):
     return [0]*n
